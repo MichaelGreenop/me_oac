@@ -79,29 +79,23 @@ def main():
 
         
 
-
-        
-
+        pp_data = pd.DataFrame(sg).set_index(waves)
 
         # Model 1 test features
+        test_spec_975 = pp_data.loc[975:981].mean(axis=0)
+        test_spec_1026 = pp_data.loc[1026:1028].mean(axis=0)
+        test_spec_1586 = pp_data.loc[1586:1588].mean(axis=0)
 
-        test_spec_975 = data[363:376].mean()
-        test_spec_1026 = data[467:474].mean()
-        test_spec_1586 = data[1630:1635].mean()
-
+        # Model 2 test features
+        test_spec_979 = pp_data.loc[979:981].mean(axis=0)
+        test_spec_1025 = pp_data.loc[1025:1028].mean(axis=0)
         
 
-        # Model 2 test features 
-
-        test_spec_977 = data[371:375].mean()
-        test_spec_1025 = data[467:474].mean()
-
-        DF = pd.DataFrame([test_spec_975, test_spec_1026, test_spec_1586, test_spec_977, test_spec_1025])
+        DF = pd.DataFrame([test_spec_975, test_spec_1026, test_spec_1586, test_spec_979, test_spec_1025])
 
 
         
-        st.write(DF.shape)
-
+        
         data_1 = np.array(DF).reshape((5,1))[:3].T
         data_2 = np.array(DF).reshape((5,1))[3:].T
 
